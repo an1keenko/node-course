@@ -1,5 +1,12 @@
 const perf_hooks = require('perf_hooks')
 
+function test() {
+    const arr = [];
+    for (let i = 0; i < 100000; i++) {
+        arr.push(i * i)
+    }
+}
+
 test = perf_hooks.performance.timerify(test)
 
 const perfObserver = new perf_hooks.PerformanceObserver((items, observer) => {
@@ -10,12 +17,6 @@ const perfObserver = new perf_hooks.PerformanceObserver((items, observer) => {
 })
 
 perfObserver.observe({ entryTypes: ['measure', 'function'] })
-
-function test() {
-    for (let i = 0; i < 100000; i++) {
-        arr.push(i * i)
-    }
-}
 
 function slow() {
     performance.mark('start')
