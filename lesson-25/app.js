@@ -27,3 +27,4 @@ childProcess.stderr.on('data', (data) => {
 childProcess.on('exit', (code) => {
     console.log(`Код выхода: ${code}`)
 })
+console.log('test')
